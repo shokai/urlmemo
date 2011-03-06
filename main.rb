@@ -11,6 +11,7 @@ post '/add' do
   title = params['title']
   begin
     raise Err.new 'url and title required' if !url or url.size < 1 or !title or title.size < 1
+    raise Err.new 'invalid url' unless url =~ /http:\/\/.+/
     if tmp = Page.where(:url => url).first
       raise Err.new("url already exists => #{app_root}/#{tmp.name}") 
     end
