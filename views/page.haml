@@ -19,3 +19,6 @@
               title : #{@page.title}
             %li
               name : #{@page.name}
+        %div#control
+          %form{:method => 'GET', :action => "#{app_root}/#{@page.name}/delete"}
+            %input{:type => 'submit', :value => 'delete'}

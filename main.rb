@@ -53,6 +53,16 @@ get '/*/show' do
   end
 end
 
+get '/*/delete' do
+  name = params[:splat].first
+  begin
+    Page.where(:name => name).delete
+    redirect app_root
+  rescue => e
+    STDERR.puts e
+  end
+end
+
 get '/*' do
   name = params[:splat].first
   begin
@@ -66,3 +76,4 @@ get '/*' do
     status 500
   end
 end
+
