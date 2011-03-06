@@ -17,10 +17,10 @@ post '/add' do
     end
     page = Page.new(:url => url, :time => Time.now.to_i, :title => title)
     if !name or name.size < 1
-      if last_page = Page.where(:name.gt => 0).desc(:name).first
-        page.name = last_page.name+1
+      if last = Page.where(:name => /[1-9][0-9]*/).map{|i|i.name.to_i}.max
+        page.name = (last+1).to_s
       else
-        page.name = 1
+        page.name = 1.to_s
       end
     else
       name.gsub!('/','')
