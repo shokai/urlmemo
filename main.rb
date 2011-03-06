@@ -11,6 +11,9 @@ post '/add' do
   title = params['title']
   begin
     raise Err.new 'url and title required' if !url or url.size < 1 or !title or title.size < 1
+    if tmp = Page.where(:url => url).first
+      raise Err.new("url already exists => #{app_root}/#{tmp.name}") 
+    end
     page = Page.new(:url => url, :time => Time.now.to_i, :title => title)
     if !name or name.size < 1
       if last_page = Page.where(:name.gt => 0).desc(:name).first
@@ -20,9 +23,6 @@ post '/add' do
       end
     else
       raise Err.new('page already exists') if Page.where(:name => name).count > 0
-      if tmp = Page.where(:url => url).first
-        raise Err.new("url already exists => #{app_root}/#{tmp.name}") 
-      end
       page.name = name
     end
     page.save
