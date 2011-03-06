@@ -39,13 +39,22 @@ get '/' do
 end
 
 get '/*/show' do
+  name = params[:splat].first
+  begin
+    unless @page = Page.where(:name => name).first
+      status 404
+    else
+      haml :page
+    end
+  rescue => e
+    STDERR.puts e
+  end
 end
 
 get '/*' do
   name = params[:splat].first
   begin
-    page = Page.where(:name => name).first
-    unless page
+    unless page = Page.where(:name => name).first
       status 404
     else
       redirect page.url
