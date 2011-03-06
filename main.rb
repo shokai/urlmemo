@@ -23,7 +23,7 @@ post '/add' do
         page.name = 1
       end
     else
-      name.gsub!('/',' ')
+      name.gsub!('/','')
       raise Err.new('page already exists') if Page.where(:name => name).count > 0
       page.name = name
     end
