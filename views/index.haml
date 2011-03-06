@@ -1,0 +1,17 @@
+!!! XML
+%html
+  %head
+    %title= @title
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/fonts-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/reset-3.1.1.css", :type => 'text/css'}
+  %body
+    %div.container
+      %div.head
+        %h1= @title
+      %div.main
+        %div#pages
+          %ul
+            - for page in @pages
+              %li
+                %a{:href => "#{page.url}"} #{page.title}
+                %a{:href => "#{app_root}/#{page.name}/show"} #{page.name}
