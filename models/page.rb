@@ -1,9 +1,9 @@
 
 class Page
   include Mongoid::Document
-  field :url
-  field :title
-  field :name
+  field :url, :type => String
+  field :title, :type => String
+  field :name, :type => String
   field :time, :type => Integer
 
   def to_hash
