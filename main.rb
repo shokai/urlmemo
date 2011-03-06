@@ -5,7 +5,7 @@ before do
   @title = 'urlmemo'
 end
 
-post '/add' do
+post '/' do
   name = params['name']
   url = params['url']
   title = params['title']
