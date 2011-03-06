@@ -28,6 +28,7 @@ post '/add' do
     page.save
     @mes = page.to_hash.to_json
   rescue => e
+    STDERR.puts e
     @mes = {:error => e.to_s}.to_json
   end
 end
@@ -35,4 +36,22 @@ end
 get '/' do
   @pages = Page.all.desc(:time)
   haml :index
+end
+
+get '/*/show' do
+end
+
+get '/*' do
+  name = params[:splat].first
+  begin
+    page = Page.where(:name => name).first
+    unless page
+      status 404
+    else
+      redirect page.url
+    end
+  rescue => e
+    STDERR.puts e
+    status 500
+  end
 end
