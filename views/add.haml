@@ -32,4 +32,10 @@
             %li
               %p
                 %input{:type => 'button', :id => 'btnsave', :value => 'save'}
-
+        %div#bookmarklet
+          %h2 bookmarklet
+          %p
+            drag&drop following link to bookmark bar
+          %p
+            %a{:href => "javascript:location.href='#{app_root}/add?url='+location.href+'&title='+encodeURI(document.title);"}
+              [+urlmemo]
