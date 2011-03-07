@@ -1,0 +1,34 @@
+!!! XML
+%html
+  %head
+    %title= @title
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/fonts-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/reset-3.1.1.css", :type => 'text/css'}
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/jquery.js"}
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/util.js"}
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/add.js"}
+    :javascript
+      var app_root = '#{app_root}';
+  %body
+    %div.container
+      %div.head
+        %a{:href => app_root}
+          %h1= @title
+      %div.main
+        %div#add
+          %h2 Add
+          %ul
+            %li
+              %p
+                URL
+              %p
+                %input{:type => 'text', :id => 'url', :value => @page_url}
+            %li
+              %p
+                Title
+              %p
+                %input{:type => 'text', :id => 'title', :value => @page_title}
+            %li
+              %p
+                %input{:type => 'button', :id => 'btnsave', :value => 'save'}
+

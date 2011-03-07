@@ -5,6 +5,14 @@ before do
   @title = 'urlmemo'
 end
 
+get '/add' do
+  @page_url = params['url']
+  @page_url = 'http://' if !@page_url or @page_url.size < 1
+  @page_title = params['title']
+  @page_title = '(no title)' if !@page_title or @page_title.size < 1
+  haml :add
+end
+
 post '/' do
   name = params['name']
   url = params['url']
