@@ -10,6 +10,7 @@
         %h1= @title
       %div.main
         %div#pages
+          %h2 #{@pages.count} pages
           %ul
             - for page in @pages
               %li
