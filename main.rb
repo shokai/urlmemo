@@ -24,6 +24,7 @@ post '/' do
       end
     else
       name.gsub!('/','')
+      raise Err.new('invalid name') if routed?("/#{name}")
       raise Err.new('page already exists') if Page.where(:name => name).count > 0
       page.name = name
     end

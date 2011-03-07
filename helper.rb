@@ -25,6 +25,13 @@ def app_root
   "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}#{env['SCRIPT_NAME']}"
 end
 
-class Err < StandardError
+def routed?(path)
+  Sinatra::Application.routes['GET'].map{|i|i.first}.each{|i|
+    next if i.to_s == /^\/(.*?)$/.to_s
+    return true if path =~ i
+  }
+  return false
 end
 
+class Err < StandardError
+end
