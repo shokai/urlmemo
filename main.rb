@@ -26,23 +26,24 @@ post '/' do
     raise Err.new 'url and title required' if !url or url.size < 1 or !title or title.size < 1
     raise Err.new 'invalid url' unless url =~ /https?:\/\/.+/
     if tmp = Page.where(:url => url).first
-      raise Err.new("url already exists => #{app_root}/#{tmp.name}") 
-    end
-    page = Page.new(:url => url, :time => Time.now.to_i, :title => title)
-    if !name or name.size < 1
-      if last = Page.where(:name => /[1-9][0-9]*/).map{|i|i.name.to_i}.max
-        page.name = (last+1).to_s
-      else
-        page.name = 1.to_s
-      end
+      @mes = tmp.to_hash.to_json
     else
-      name.gsub!('/','')
-      raise Err.new('invalid name') if routed?("/#{name}")
-      raise Err.new('page already exists') if Page.where(:name => name).count > 0
-      page.name = name
+      page = Page.new(:url => url, :time => Time.now.to_i, :title => title)
+      if !name or name.size < 1
+        if last = Page.where(:name => /[1-9][0-9]*/).map{|i|i.name.to_i}.max
+          page.name = (last+1).to_s
+        else
+          page.name = 1.to_s
+        end
+      else
+        name.gsub!('/','')
+        raise Err.new('invalid name') if routed?("/#{name}")
+        raise Err.new('page already exists') if Page.where(:name => name).count > 0
+        page.name = name
+      end
+      page.save
+      @mes = page.to_hash.to_json
     end
-    page.save
-    @mes = page.to_hash.to_json
   rescue => e
     STDERR.puts e
     @mes = {:error => e.to_s}.to_json
