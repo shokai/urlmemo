@@ -13,6 +13,11 @@ get '/add' do
   haml :add
 end
 
+get '/api' do
+  @title += ' API'
+  haml :api
+end
+
 post '/' do
   name = params['name']
   url = params['url']
@@ -55,6 +60,7 @@ get '/*/show' do
     unless @page = Page.where(:name => name).first
       status 404
     else
+      @title += ' '+@page.title
       haml :page
     end
   rescue => e

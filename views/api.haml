@@ -1,0 +1,19 @@
+!!! XML
+%html
+  %head
+    %title= @title
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/fonts-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/reset-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/main.css", :type => 'text/css'}
+  %body
+    %div.container
+      %div.head
+        %a{:href => app_root}
+          %h1= @title
+      %div.main
+        %div#api
+          %h2 add
+          %ul
+            %li HTTP-POST #{app_root}
+            %li params : url, title, name
+            %li curl -d 'url=http://shokai.org&title=橋本商会&name=shokaiorg' '#{app_root}'
