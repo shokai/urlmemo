@@ -1,0 +1,36 @@
+
+
+body {
+    background-color : #FFD;
+    font-size : 15pt;
+}
+
+h1 {
+    font-size : 30pt;
+}
+
+h2 {
+    font-size : 20pt;
+    margin : 20px 0px 0px -20px;
+}
+
+.head {
+    margin-bottom : 20px;
+}
+
+.main {
+    margin : 0px 0px 0px 50px;
+}
+
+#pages li {
+    list-style : circle;
+    margin-left : 20px;
+}
+
+li {
+    margin-bottom : 20px;
+}
+
+input {
+    font-size : 30pt;
+}

@@ -4,15 +4,20 @@
     %title= @title
     %link{:rel => 'stylesheet', :href => "#{app_root}/css/fonts-3.1.1.css", :type => 'text/css'}
     %link{:rel => 'stylesheet', :href => "#{app_root}/css/reset-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/main.css", :type => 'text/css'}
   %body
     %div.container
       %div.head
         %h1= @title
       %div.main
+        %div#add
+          %h2 newpage
+          %a{:href => "#{app_root}/add"}
+            +add
         %div#pages
           %h2 #{@pages.count} pages
           %ul
             - for page in @pages
               %li
                 %a{:href => "#{page.url}"} #{page.title}
-                %a{:href => "#{app_root}/#{page.name}/show"} #{page.name}
+                %a{:href => "#{app_root}/#{page.name}/show"} [#{page.name}]

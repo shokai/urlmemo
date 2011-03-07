@@ -4,6 +4,7 @@
     %title= @title
     %link{:rel => 'stylesheet', :href => "#{app_root}/css/fonts-3.1.1.css", :type => 'text/css'}
     %link{:rel => 'stylesheet', :href => "#{app_root}/css/reset-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/main.css", :type => 'text/css'}
     %script{:type => 'text/javascript', :src => "#{app_root}/js/jquery.js"}
     %script{:type => 'text/javascript', :src => "#{app_root}/js/util.js"}
     %script{:type => 'text/javascript', :src => "#{app_root}/js/add.js"}
@@ -16,7 +17,7 @@
           %h1= @title
       %div.main
         %div#add
-          %h2 Add
+          %h2 Add new Page
           %ul
             %li
               %p
@@ -25,7 +26,7 @@
                 %input{:type => 'text', :id => 'url', :value => @page_url}
             %li
               %p
-                Title
+                TITLE
               %p
                 %input{:type => 'text', :id => 'title', :value => @page_title}
             %li
