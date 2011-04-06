@@ -38,3 +38,7 @@ input {
 div#bookmarklet input{
     font-size : 15pt;
 }
+
+a.url {
+    font-size : smaller;
+}
