@@ -21,6 +21,8 @@
               %li
                 %a{:href => "#{page.url}"} #{page.title}
                 %a{:href => "#{app_root}/#{page.name}/show"} [#{page.name}]
+                &nbsp;-&nbsp;
+                %a{:href => "#{page.url}"} #{page.url}
         %div#api
           %h2 API
           %a{:href => "#{app_root}/api"} document
