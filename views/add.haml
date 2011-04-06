@@ -34,8 +34,16 @@
                 %input{:type => 'button', :id => 'btnsave', :value => 'save'}
         %div#bookmarklet
           %h2 bookmarklet
-          %p
-            drag&drop following link to bookmark bar
-          %p
-            %a{:href => "javascript:location.href='#{app_root}/add?url='+location.href+'&title='+encodeURI(document.title);"}
-              [+urlmemo]
+          - @bml = "javascript:location.href='#{app_root}/add?url='+location.href+'&title='+encodeURI(document.title);"
+          %ul
+            %li
+              %p
+                drag&drop following link to bookmark bar
+              %p
+                %a{:href => @bml}
+                  [+urlmemo]
+            %li
+              %p
+                or copy
+              %p
+                %input{:type => 'text', :value => @bml, :size => 30}

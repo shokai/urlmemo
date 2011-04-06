@@ -34,3 +34,7 @@ li {
 input {
     font-size : 30pt;
 }
+
+div#bookmarklet input{
+    font-size : 15pt;
+}
