@@ -1,6 +1,5 @@
 gem 'rack'
 gem 'sinatra'
-gem 'thin'
 gem 'sinatra-reloader'
 gem 'haml'
 gem 'mongo'
